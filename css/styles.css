@@ -431,6 +431,14 @@ nav ul {
   overflow: hidden;
 }
 
+/* Hero with background image */
+.hero-with-image {
+  background-image: linear-gradient(135deg, rgba(30, 93, 140, 0.92) 0%, rgba(30, 93, 140, 0.88) 50%, rgba(39, 118, 171, 0.85) 100%), url('https://www.mmbc.co.uk/wp-content/uploads/2025/01/Mooring-Lydiate.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 /* Semi-transparent overlay for better text readability */
 .hero-overlay {
   position: absolute;
@@ -438,7 +446,7 @@ nav ul {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.15);
   z-index: 1;
 }
 
@@ -635,6 +643,14 @@ section:nth-of-type(even) {
   line-height: 1;
 }
 
+.card-icon-svg {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto var(--spacing-lg);
+  color: var(--color-primary);
+  stroke-width: 1.5;
+}
+
 .card-title {
   color: var(--color-primary);
   margin-bottom: var(--spacing-md);
@@ -726,6 +742,21 @@ section:nth-of-type(even) {
   color: var(--color-text-light);
   margin-bottom: var(--spacing-md);
   line-height: 1.6;
+}
+
+/* Quick Links Section */
+.quick-link-icon-svg {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-primary);
+  stroke-width: 1.5;
+  transition: transform var(--transition-base), color var(--transition-base);
+}
+
+.quick-link-card:hover .quick-link-icon-svg {
+  transform: scale(1.1);
+  color: var(--color-primary-light);
 }
 
 /* ========================================

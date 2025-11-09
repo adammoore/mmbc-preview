@@ -1,0 +1,22 @@
+=== MMBC MULTI-PAGE WEBSITE - FILE STRUCTURE ===
+
+mmbc-website/
+├── css/
+│   └── styles.css (31KB)
+├── images/
+│   └── (ready for your photos)
+├── js/
+│   └── script.js (23KB)
+├── index.html (18KB) - Homepage
+├── moorings.html (18KB) - With original images
+├── membership.html (16KB) - All membership types
+├── events.html (10KB) - Summer & winter events
+├── gallery.html (8KB) - Photo gallery structure
+├── contact.html (21KB) - Complete contact directory
+├── COMPLETE-OVERVIEW.md - Start here!
+├── README-MULTIPAGE.md - Full documentation
+├── DEPLOYMENT-CHECKLIST.md - Step-by-step deployment
+└── page-mmbc.php - WordPress template (if needed)
+
+Total: 6 HTML pages + CSS + JS + 4 documentation files
+Website size: ~120KB (excluding additional images)

@@ -1,0 +1,1353 @@
+/* ========================================
+   MMBC Website Styles
+   Modern, accessible, responsive design
+   ======================================== */
+
+/* CSS Custom Properties (Variables) 
+   These allow easy theme customization and consistent styling throughout */
+:root {
+  /* Color Palette - Maritime-inspired with accessible contrast ratios */
+  --color-primary: #1e5d8c;        /* Deep nautical blue - main brand color */
+  --color-primary-light: #2776ab;   /* Lighter blue for hover states */
+  --color-primary-dark: #14466b;    /* Darker blue for accents */
+  --color-secondary: #f4a261;       /* Warm sunset orange - accent color */
+  --color-secondary-light: #f6b57f; /* Lighter orange for hover */
+  
+  /* Neutral colors for text and backgrounds */
+  --color-text: #2c3e50;            /* Dark blue-grey for body text */
+  --color-text-light: #5a6c7d;      /* Lighter grey for secondary text */
+  --color-background: #ffffff;      /* Pure white background */
+  --color-background-alt: #f8f9fa;  /* Light grey for alternating sections */
+  --color-border: #dee2e6;          /* Border color */
+  
+  /* Semantic colors for UI elements */
+  --color-success: #28a745;         /* Green for success states */
+  --color-info: #17a2b8;            /* Cyan for info */
+  --color-warning: #ffc107;         /* Yellow for warnings */
+  --color-error: #dc3545;           /* Red for errors */
+  
+  /* Typography - using system fonts with Inter as primary */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  
+  /* Font sizes using rem units (scales with user's browser settings for accessibility) */
+  --font-size-xs: 0.75rem;    /* 12px at default 16px base */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+  
+  /* Font weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Spacing scale - consistent spacing throughout the design */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  --spacing-3xl: 4rem;     /* 64px */
+  --spacing-4xl: 6rem;     /* 96px */
+  
+  /* Border radius for rounded corners */
+  --radius-sm: 0.25rem;    /* 4px - subtle rounding */
+  --radius-md: 0.5rem;     /* 8px - standard rounding */
+  --radius-lg: 1rem;       /* 16px - prominent rounding */
+  --radius-full: 9999px;   /* Full circle/pill shape */
+  
+  /* Shadows for depth and elevation */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Transitions for smooth animations */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+  
+  /* Layout constraints */
+  --container-max-width: 1200px;  /* Maximum content width */
+  --header-height: 70px;           /* Fixed header height */
+}
+
+/* ========================================
+   CSS Reset and Base Styles
+   ======================================== */
+
+/* Box sizing reset - makes width/height calculations more intuitive */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;  /* Include padding and border in element's total width/height */
+  margin: 0;               /* Remove default margins */
+  padding: 0;              /* Remove default padding */
+}
+
+/* Root element and body setup */
+html {
+  font-size: 16px;         /* Base font size (1rem = 16px) */
+  scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+  -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape on iOS */
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.6;        /* Comfortable line spacing for readability */
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;  /* Better font rendering on Mac/iOS */
+  -moz-osx-font-smoothing: grayscale;   /* Better font rendering on Firefox/Mac */
+}
+
+/* Typography improvements */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;        /* Tighter line height for headings */
+  margin-bottom: var(--spacing-md);
+  color: var(--color-primary-dark);
+}
+
+/* Heading size scale */
+h1 { font-size: var(--font-size-4xl); }
+h2 { font-size: var(--font-size-3xl); }
+h3 { font-size: var(--font-size-2xl); }
+h4 { font-size: var(--font-size-xl); }
+h5 { font-size: var(--font-size-lg); }
+h6 { font-size: var(--font-size-base); }
+
+/* Paragraph spacing */
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+/* Link styles with WCAG-compliant contrast */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover,
+a:focus {
+  color: var(--color-primary-light);
+  text-decoration: underline;
+}
+
+/* Focus styles for keyboard navigation accessibility */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* List styles */
+ul, ol {
+  margin-bottom: var(--spacing-md);
+  padding-left: var(--spacing-xl);
+}
+
+li {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Image responsiveness */
+img {
+  max-width: 100%;         /* Never overflow container */
+  height: auto;            /* Maintain aspect ratio */
+  display: block;          /* Remove bottom space caused by inline display */
+}
+
+/* Remove list styling from navigation menus */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ========================================
+   Skip Link for Accessibility
+   ======================================== */
+
+/* Skip link allows keyboard users to bypass navigation and jump to main content */
+.skip-link {
+  position: absolute;
+  top: -100px;             /* Hide off-screen by default */
+  left: var(--spacing-md);
+  z-index: 9999;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-md);
+  transition: top var(--transition-base);
+}
+
+/* Show skip link when focused via keyboard */
+.skip-link:focus {
+  top: var(--spacing-md);
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* ========================================
+   Container - Centers content with max width
+   ======================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+}
+
+/* Wider padding on larger screens */
+@media (min-width: 768px) {
+  .container {
+    padding-left: var(--spacing-xl);
+    padding-right: var(--spacing-xl);
+  }
+}
+
+/* ========================================
+   Header and Navigation
+   ======================================== */
+
+.site-header {
+  background-color: var(--color-background);
+  box-shadow: var(--shadow-sm);
+  position: sticky;         /* Stays at top when scrolling */
+  top: 0;
+  z-index: 1000;           /* Ensures header stays above other content */
+  height: var(--header-height);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+}
+
+/* Logo styling */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  transition: opacity var(--transition-base);
+}
+
+.logo:hover {
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  color: var(--color-primary);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.logo-primary {
+  font-size: var(--font-size-lg);
+  line-height: 1;
+}
+
+.logo-secondary {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  font-weight: var(--font-weight-normal);
+}
+
+/* Mobile menu toggle button - only visible on small screens */
+.mobile-menu-toggle {
+  display: none;            /* Hidden by default (desktop) */
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  z-index: 1001;
+}
+
+/* Hamburger menu lines */
+.hamburger-line {
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-primary);
+  transition: all var(--transition-base);
+  border-radius: var(--radius-sm);
+}
+
+/* Animation when menu is open */
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Navigation menu styling */
+.main-nav {
+  display: flex;
+}
+
+.nav-list {
+  display: flex;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.nav-list a {
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-sm) 0;
+  position: relative;
+  transition: color var(--transition-base);
+}
+
+/* Underline effect on hover */
+.nav-list a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width var(--transition-base);
+}
+
+.nav-list a:hover::after,
+.nav-list a[aria-current="page"]::after {
+  width: 100%;
+}
+
+.nav-list a:hover {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* Current page indicator */
+.nav-list a[aria-current="page"] {
+  color: var(--color-primary);
+}
+
+/* Mobile responsive navigation - hamburger menu on small screens */
+@media (max-width: 991px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  /* Navigation slides in from right on mobile */
+  .main-nav {
+    position: fixed;
+    top: var(--header-height);
+    right: -100%;           /* Hidden off-screen */
+    width: 80%;
+    max-width: 400px;
+    height: calc(100vh - var(--header-height));
+    background-color: var(--color-background);
+    box-shadow: var(--shadow-xl);
+    padding: var(--spacing-xl);
+    transition: right var(--transition-slow);
+    overflow-y: auto;       /* Scrollable if content is too tall */
+  }
+  
+  /* Show menu when toggle is activated */
+  .main-nav.active {
+    right: 0;
+  }
+  
+  /* Stack navigation items vertically on mobile */
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+  }
+  
+  .nav-list a {
+    font-size: var(--font-size-lg);
+    width: 100%;
+  }
+}
+
+/* Tablet and smaller desktop adjustments */
+@media (max-width: 1199px) {
+  .logo-primary {
+    font-size: var(--font-size-base);
+  }
+  
+  .logo-secondary {
+    display: none;          /* Hide "Est. 1932" on smaller screens */
+  }
+  
+  .nav-list {
+    gap: var(--spacing-lg);
+  }
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+
+.hero-section {
+  position: relative;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 50%, var(--color-primary-light) 100%);
+  color: white;
+  padding: var(--spacing-4xl) 0;
+  overflow: hidden;
+}
+
+/* Semi-transparent overlay for better text readability */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: var(--font-size-5xl);
+  color: white;
+  margin-bottom: var(--spacing-lg);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-md);
+  opacity: 0.95;
+}
+
+.hero-description {
+  font-size: var(--font-size-lg);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-2xl);
+  opacity: 0.9;
+}
+
+.hero-cta {
+  display: flex;
+  gap: var(--spacing-lg);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Mobile hero adjustments */
+@media (max-width: 767px) {
+  .hero-section {
+    min-height: 400px;
+    padding: var(--spacing-2xl) 0;
+  }
+  
+  .hero-title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .hero-subtitle {
+    font-size: var(--font-size-xl);
+  }
+  
+  .hero-description {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* ========================================
+   Button Styles
+   ======================================== */
+
+.btn {
+  display: inline-block;
+  padding: var(--spacing-md) var(--spacing-2xl);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  line-height: 1.5;
+}
+
+/* Primary button - main call-to-action */
+.btn-primary {
+  background-color: var(--color-secondary);
+  color: white;
+  border-color: var(--color-secondary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--color-secondary-light);
+  border-color: var(--color-secondary-light);
+  text-decoration: none;
+  transform: translateY(-2px);  /* Subtle lift effect */
+  box-shadow: var(--shadow-md);
+}
+
+/* Secondary button - alternative actions */
+.btn-secondary {
+  background-color: transparent;
+  color: white;
+  border-color: white;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: white;
+  color: var(--color-primary);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Mobile button adjustments */
+@media (max-width: 575px) {
+  .btn {
+    width: 100%;            /* Full-width buttons on mobile */
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+}
+
+/* ========================================
+   Section Styles
+   ======================================== */
+
+/* Standard section padding */
+section {
+  padding: var(--spacing-4xl) 0;
+}
+
+/* Alternating background colors for visual separation */
+section:nth-of-type(even) {
+  background-color: var(--color-background-alt);
+}
+
+/* Section headings */
+.section-heading {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+  font-size: var(--font-size-4xl);
+  color: var(--color-primary);
+}
+
+.section-intro {
+  text-align: center;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-light);
+  max-width: 800px;
+  margin: 0 auto var(--spacing-2xl);
+}
+
+.subsection-heading {
+  font-size: var(--font-size-2xl);
+  margin-top: var(--spacing-2xl);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-primary);
+}
+
+/* Mobile section adjustments */
+@media (max-width: 767px) {
+  section {
+    padding: var(--spacing-2xl) 0;
+  }
+  
+  .section-heading {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+/* ========================================
+   About Section
+   ======================================== */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.about-card {
+  background-color: var(--color-background);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.about-card:hover {
+  transform: translateY(-5px);  /* Lift effect on hover */
+  box-shadow: var(--shadow-xl);
+}
+
+.card-icon {
+  font-size: var(--font-size-5xl);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1;
+}
+
+.card-title {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.card-text {
+  color: var(--color-text-light);
+  line-height: 1.8;
+}
+
+/* Clubhouse information styling */
+.clubhouse-info {
+  background-color: var(--color-background);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.clubhouse-text {
+  font-size: var(--font-size-lg);
+  line-height: 1.8;
+  color: var(--color-text-light);
+}
+
+/* ========================================
+   Moorings Section
+   ======================================== */
+
+.moorings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+.mooring-card {
+  background-color: var(--color-background);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.mooring-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}
+
+.mooring-header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  color: white;
+  padding: var(--spacing-xl);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mooring-title {
+  color: white;
+  margin-bottom: 0;
+  font-size: var(--font-size-2xl);
+}
+
+.mooring-badge {
+  background-color: var(--color-secondary);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.mooring-details {
+  padding: var(--spacing-xl);
+}
+
+/* Definition list styling for mooring information */
+.mooring-info {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.mooring-info dt {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.mooring-info dd {
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+}
+
+/* ========================================
+   Membership Section
+   ======================================== */
+
+.membership-notice {
+  background-color: var(--color-primary);
+  color: white;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-radius: var(--radius-md);
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+  font-size: var(--font-size-lg);
+}
+
+.membership-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.membership-card {
+  background-color: var(--color-background);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.membership-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}
+
+.membership-header {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  color: white;
+  padding: var(--spacing-xl);
+  text-align: center;
+}
+
+.membership-title {
+  color: white;
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-xl);
+}
+
+.membership-price {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.price-amount {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+}
+
+.price-period {
+  font-size: var(--font-size-base);
+  opacity: 0.9;
+}
+
+.membership-content {
+  padding: var(--spacing-xl);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.membership-requirement {
+  font-style: italic;
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.membership-benefits {
+  list-style: none;
+  padding: 0;
+}
+
+.membership-benefits li {
+  position: relative;
+  padding-left: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+/* Checkmark icon before each benefit */
+.membership-benefits li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-success);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+}
+
+/* Membership application section */
+.membership-application {
+  background-color: var(--color-background);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.application-content p {
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.8;
+}
+
+.application-cta {
+  margin-top: var(--spacing-2xl);
+  text-align: center;
+}
+
+.application-note {
+  margin-top: var(--spacing-lg);
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+}
+
+/* ========================================
+   Events Section
+   ======================================== */
+
+.events-intro {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.events-seasons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.season-card {
+  background-color: var(--color-background);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.season-icon {
+  font-size: var(--font-size-5xl);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1;
+}
+
+.season-title {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.season-content {
+  text-align: left;
+}
+
+.season-activities {
+  margin-top: var(--spacing-lg);
+  list-style-position: inside;
+}
+
+.season-activities li {
+  color: var(--color-text-light);
+  line-height: 1.8;
+}
+
+/* Events calendar placeholder */
+.events-calendar {
+  background-color: var(--color-background);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.events-note {
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.8;
+}
+
+.events-cta {
+  margin-top: var(--spacing-xl);
+}
+
+/* ========================================
+   Gallery Section
+   ======================================== */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.gallery-placeholder {
+  background-color: var(--color-background-alt);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-3xl);
+  text-align: center;
+  border: 2px dashed var(--color-border);
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.gallery-placeholder:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+  transform: scale(1.05);
+}
+
+.gallery-placeholder p {
+  font-size: var(--font-size-5xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.gallery-placeholder span {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+}
+
+.gallery-note {
+  text-align: center;
+  color: var(--color-text-light);
+  font-style: italic;
+}
+
+/* ========================================
+   Contact Section
+   ======================================== */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-3xl);
+}
+
+.contact-info,
+.contact-officers {
+  background-color: var(--color-background);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-subtitle {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-2xl);
+}
+
+.contact-item {
+  margin-bottom: var(--spacing-2xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.contact-label {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-lg);
+}
+
+.contact-details {
+  color: var(--color-text-light);
+  line-height: 1.8;
+  font-style: normal;  /* Override default address italic style */
+}
+
+/* ========================================
+   Accordion Component (for contact officers)
+   ======================================== */
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.accordion-item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* Accordion trigger button */
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-lg);
+  background-color: var(--color-background-alt);
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  text-align: left;
+  transition: background-color var(--transition-base);
+}
+
+.accordion-trigger:hover {
+  background-color: var(--color-border);
+}
+
+.accordion-trigger[aria-expanded="true"] {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.accordion-icon {
+  font-size: var(--font-size-2xl);
+  line-height: 1;
+  transition: transform var(--transition-base);
+}
+
+/* Rotate icon when expanded */
+.accordion-trigger[aria-expanded="true"] .accordion-icon {
+  transform: rotate(45deg);
+}
+
+/* Accordion content panel */
+.accordion-content {
+  padding: var(--spacing-lg);
+  background-color: var(--color-background);
+}
+
+.accordion-content[hidden] {
+  display: none;
+}
+
+/* Officers list within accordion */
+.officers-list {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.officers-list dt {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  margin-top: var(--spacing-md);
+}
+
+.officers-list dt:first-child {
+  margin-top: 0;
+}
+
+.officers-list dd {
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+.bank-heading {
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.bank-heading:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+.site-footer {
+  background-color: var(--color-primary-dark);
+  color: white;
+  padding: var(--spacing-3xl) 0 var(--spacing-xl);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.footer-section {
+  /* Each section takes equal space in the grid */
+}
+
+.footer-heading {
+  color: white;
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+.footer-text {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-md);
+}
+
+.footer-text a {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-text a:hover {
+  color: var(--color-secondary);
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  transition: color var(--transition-base);
+}
+
+.footer-links a:hover {
+  color: var(--color-secondary);
+}
+
+/* Footer bottom - copyright and credits */
+.footer-bottom {
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+}
+
+.credits {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--font-size-sm);
+}
+
+/* Subtle FAIR-Res-ConMan branding */
+.fair-link {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: underline;
+  transition: color var(--transition-base);
+}
+
+.fair-link:hover {
+  color: var(--color-secondary);
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
+
+/* Screen reader only - hides content visually but keeps it accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ========================================
+   Responsive Design Breakpoints
+   ======================================== */
+
+/* Large tablets and small laptops (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  :root {
+    --font-size-5xl: 2.5rem;
+  }
+}
+
+/* Tablets (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  :root {
+    --font-size-4xl: 2rem;
+    --font-size-5xl: 2.25rem;
+  }
+}
+
+/* Large mobile devices (576px to 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+  :root {
+    --font-size-3xl: 1.5rem;
+    --font-size-4xl: 1.75rem;
+    --font-size-5xl: 2rem;
+  }
+}
+
+/* Small mobile devices (up to 575px) */
+@media (max-width: 575px) {
+  :root {
+    --font-size-2xl: 1.25rem;
+    --font-size-3xl: 1.5rem;
+    --font-size-4xl: 1.75rem;
+    --font-size-5xl: 2rem;
+    --spacing-2xl: 2rem;
+    --spacing-3xl: 2.5rem;
+    --spacing-4xl: 3rem;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .about-grid,
+  .moorings-grid,
+  .membership-grid,
+  .events-seasons,
+  .gallery-grid {
+    grid-template-columns: 1fr;  /* Single column on mobile */
+  }
+}
+
+/* ========================================
+   Print Styles (for printing web page)
+   ======================================== */
+
+@media print {
+  /* Hide navigation and interactive elements when printing */
+  .site-header,
+  .mobile-menu-toggle,
+  .skip-link,
+  .hero-cta,
+  .btn,
+  .site-footer {
+    display: none;
+  }
+  
+  /* Optimize for print */
+  body {
+    font-size: 12pt;
+    color: black;
+    background: white;
+  }
+  
+  /* Ensure links are visible with their URLs */
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+  
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+  
+  /* Page breaks */
+  section {
+    page-break-inside: avoid;
+  }
+  
+  h2, h3 {
+    page-break-after: avoid;
+  }
+}
+
+/* ========================================
+   Accessibility - Reduced Motion
+   ======================================== */
+
+/* Respect user's preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================
+   High Contrast Mode Support
+   ======================================== */
+
+/* Improve visibility in Windows high contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary: #0000ff;
+    --color-text: #000000;
+    --color-background: #ffffff;
+  }
+  
+  .btn {
+    border-width: 2px;
+  }
+}

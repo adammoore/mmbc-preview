@@ -433,7 +433,7 @@ nav ul {
 
 /* Hero with background image */
 .hero-with-image {
-  background-image: linear-gradient(135deg, rgba(30, 93, 140, 0.92) 0%, rgba(30, 93, 140, 0.88) 50%, rgba(39, 118, 171, 0.85) 100%), url('https://www.mmbc.co.uk/wp-content/uploads/2025/01/Mooring-Lydiate.png');
+  background-image: linear-gradient(135deg, rgba(30, 93, 140, 0.92) 0%, rgba(30, 93, 140, 0.88) 50%, rgba(39, 118, 171, 0.85) 100%), url('../images/mooring-lydiate.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -1,0 +1,55 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//MMBC//Events Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:MMBC Events
+X-WR-TIMEZONE:Europe/London
+X-WR-CALDESC:Mersey Motor Boat Club Events
+
+BEGIN:VEVENT
+UID:mmbc-friday-night-bar@mmbc.co.uk
+DTSTART:20250110T190000
+DTEND:20250110T230000
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:MMBC Friday Night Bar
+DESCRIPTION:Join us for Friday Night at the Club!\n\nBar open with drinks and good company\nDJ playing music and taking requests\nHot food available (burgers & fries £3.50)\n\nFriends and family welcome!\n\nLocation: MMBC Clubhouse, 36 Pilling Lane, Lydiate\n\nFor more info: social@mmbc.co.uk
+LOCATION:MMBC Clubhouse, 36 Pilling Lane, Lydiate, Liverpool L31 4HF
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:mmbc-winter-social-jan@mmbc.co.uk
+DTSTART:20250125T190000
+DTEND:20250125T230000
+SUMMARY:MMBC Winter Social Event
+DESCRIPTION:Winter social gathering at the clubhouse.\n\nDetails TBC - check with Social Secretary for full programme.\n\nLocation: MMBC Clubhouse, 36 Pilling Lane, Lydiate
+LOCATION:MMBC Clubhouse, 36 Pilling Lane, Lydiate, Liverpool L31 4HF
+STATUS:TENTATIVE
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:mmbc-winter-social-feb@mmbc.co.uk
+DTSTART:20250215T190000
+DTEND:20250215T230000
+SUMMARY:MMBC Winter Social Event
+DESCRIPTION:Winter social gathering at the clubhouse.\n\nDetails TBC - check with Social Secretary for full programme.\n\nLocation: MMBC Clubhouse, 36 Pilling Lane, Lydiate
+LOCATION:MMBC Clubhouse, 36 Pilling Lane, Lydiate, Liverpool L31 4HF
+STATUS:TENTATIVE
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:mmbc-winter-social-mar@mmbc.co.uk
+DTSTART:20250315T190000
+DTEND:20250315T230000
+SUMMARY:MMBC Winter Social Event
+DESCRIPTION:Winter social gathering at the clubhouse.\n\nDetails TBC - check with Social Secretary for full programme.\n\nLocation: MMBC Clubhouse, 36 Pilling Lane, Lydiate
+LOCATION:MMBC Clubhouse, 36 Pilling Lane, Lydiate, Liverpool L31 4HF
+STATUS:TENTATIVE
+SEQUENCE:0
+END:VEVENT
+
+END:VCALENDAR

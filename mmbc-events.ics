@@ -52,4 +52,15 @@ STATUS:TENTATIVE
 SEQUENCE:0
 END:VEVENT
 
+BEGIN:VEVENT
+UID:mmbc-friday-night-oct3@mmbc.co.uk
+DTSTART:20251003T190000
+DTEND:20251003T230000
+SUMMARY:MMBC Friday Night Bar - Hannah & Keith + DJ Pete
+DESCRIPTION:MMBC Friday Night Bar\n\nPlease come along and support your club friends and family welcome!\n\nTonight's Features:\n• Hannah & Keith will be pulling the pints\n• DJ Pete playing the music and taking requests\n• Sha and Mick will be serving cheese burgers & fries - Just £3.50\n\nLocation: MMBC Clubhouse, 36 Pilling Lane, Lydiate\n\nFor more info: social@mmbc.co.uk or call Sharron Brown 07793 199762
+LOCATION:MMBC Clubhouse, 36 Pilling Lane, Lydiate, Liverpool L31 4HF
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
 END:VCALENDAR

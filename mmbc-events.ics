@@ -63,4 +63,37 @@ STATUS:CONFIRMED
 SEQUENCE:0
 END:VEVENT
 
+BEGIN:VEVENT
+UID:mmbc-presidents-evening-nov2025@mmbc.co.uk
+DTSTART:20251128T190000
+DTEND:20251128T230000
+SUMMARY:President's Evening
+DESCRIPTION:President's Evening at MMBC\n\nEntertainment: Fabulous Soul & Motown singer TKAY\n• Cold buffet\n• Raffle, stand-up bingo & more!\n\nTickets: £15.00\nTables for 6-8 can be booked\n\nAlways a popular event - secure your tickets early!\nNo children or dogs allowed at this event\n\nLocation: MMBC Clubhouse, 36 Pilling Lane, Lydiate\n\nFor tickets contact: social@mmbc.co.uk or call Sharron Brown 07793 199762
+LOCATION:MMBC Clubhouse, 36 Pilling Lane, Lydiate, Liverpool L31 4HF
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:mmbc-kids-christmas-party-dec2025@mmbc.co.uk
+DTSTART:20251206T140000
+DTEND:20251206T170000
+SUMMARY:Kids' Christmas Party
+DESCRIPTION:MMBC Kids' Christmas Party\n\nWith Dr Dave's Entertainments - plus a special guest!\nFather Christmas arrives by boat!\n\n• Lots of fun and games\n• Lunch box for every child\n• A present for every child\n\nTickets: £15.00\n\nVery popular last year - don't miss out!\n\nLocation: MMBC Clubhouse, 36 Pilling Lane, Lydiate\n\nFor tickets contact: social@mmbc.co.uk or call Sharron Brown 07793 199762
+LOCATION:MMBC Clubhouse, 36 Pilling Lane, Lydiate, Liverpool L31 4HF
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:mmbc-adults-christmas-party-dec2025@mmbc.co.uk
+DTSTART:20251213T190000
+DTEND:20251213T230000
+SUMMARY:Adults' Christmas Party
+DESCRIPTION:MMBC Adults' Christmas Party\n\nEntertainment: Bryan "Fast Eddie" Davidson - Getting us in the Christmas mood!\n• Raffle, stand-up bingo & more!\n\nTickets: £15.00\nTables for 6-8 can be booked\n\nAlways a favourite - book your place early!\nNo children or dogs allowed at this event\n\nLocation: MMBC Clubhouse, 36 Pilling Lane, Lydiate\n\nFor tickets contact: social@mmbc.co.uk or call Sharron Brown 07793 199762
+LOCATION:MMBC Clubhouse, 36 Pilling Lane, Lydiate, Liverpool L31 4HF
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
 END:VCALENDAR

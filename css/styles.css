@@ -265,6 +265,12 @@ nav ul {
   color: var(--color-primary);
 }
 
+.logo-image {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
 .logo-text {
   display: flex;
   flex-direction: column;
@@ -1412,6 +1418,43 @@ section:nth-of-type(even) {
 /* Moorings Page Styles */
 .moorings-content {
   padding: var(--spacing-4xl) 0;
+}
+
+/* Expandable Mooring Details */
+.mooring-details-expandable {
+  margin-top: var(--spacing-xl);
+}
+
+.mooring-details-summary {
+  cursor: pointer;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  padding: var(--spacing-md);
+  background-color: var(--color-background-alt);
+  border-radius: var(--radius-md);
+  list-style: none;
+  user-select: none;
+  transition: background-color var(--transition-base);
+}
+
+.mooring-details-summary:hover {
+  background-color: var(--color-primary-light);
+  color: white;
+}
+
+.mooring-details-summary::marker,
+.mooring-details-summary::-webkit-details-marker {
+  display: none;
+}
+
+.mooring-details-summary::after {
+  content: '▼';
+  float: right;
+  transition: transform var(--transition-base);
+}
+
+details[open] .mooring-details-summary::after {
+  transform: rotate(180deg);
 }
 
 .mooring-detailed {
